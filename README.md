@@ -7,6 +7,7 @@ While there are variety of [JSON schema tools](https://json-schema.org/tools) si
 1. Develop CLI tools.
 1. Compare with different components of generating JSON schema.
 
+If a .NET developer who prefer code first approach, you would often create POCO classes first for various purposes, and generate meta data like XML schema, JSON schema, database schema, WSDL and Swagger/OpenAPI definition. The goal of these project is to find the "best" .NET component that can generate JSON schema from a complex POCO class, and the schema can make the hand-crafting of JSON data become convenient with a decent text editor like Visual Studio Code and alike, fully utilizing the data constraints defined in the data model.
 
 ## Validation Tools
 
@@ -35,16 +36,12 @@ Plain Old Classes can provide enough info for XML schema and JSON schema. This o
 ### [.NET 9 Extract SChema](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema)
 
 
-### NJsonSchema
-
-References:
-* https://github.com/RicoSuter/NJsonSchema
+### [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
 
 ### [NewtonSoft.Json](https://www.newtonsoft.com/jsonschema)
 
-The vendor provides an online validator on: https://www.jsonschemavalidator.net/
+Online validator on: https://www.jsonschemavalidator.net/
 
-### JSON Everything
+### [JSON Everything](https://json-everything.net/)
 
-References:
-* https://json-everything.net/
+Online validator on: https://jsonschema.net/

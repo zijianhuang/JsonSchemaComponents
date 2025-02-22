@@ -1,0 +1,180 @@
+{
+  "type": "object",
+  "properties": {
+    "ApiSelections": {
+      "type": "object",
+      "properties": {
+        "ExcludedControllerNames": {
+          "$ref": "#/$defs/arrayOfString"
+        },
+        "DataModelAssemblyNames": {
+          "$ref": "#/$defs/arrayOfString"
+        },
+        "DataModels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "AssemblyName": {
+                "type": "string"
+              },
+              "CherryPickingMethods": {
+                "enum": [
+                  "All",
+                  "DataContract",
+                  "NewtonsoftJson",
+                  "Serializable",
+                  "AspNet",
+                  "NetCore",
+                  "ApiOnly",
+                  null
+                ]
+              },
+              "DataAnnotationsToComments": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "CherryPickingMethods": {
+          "enum": [
+            "All",
+            "DataContract",
+            "NewtonsoftJson",
+            "Serializable",
+            "AspNet",
+            "NetCore",
+            "ApiOnly",
+            null
+          ]
+        },
+        "NamespacePrefixesOfGodAssemblyTypes": {
+          "$ref": "#/$defs/arrayOfString"
+        },
+        "AllDataModelAssemblyNames": {
+          "$ref": "#/$defs/arrayOfString"
+        }
+      }
+    },
+    "ClientApiOutputs": {
+      "type": "object",
+      "properties": {
+        "CSClientNamespaceSuffix": {
+          "type": "string"
+        },
+        "DataAnnotationsEnabled": {
+          "type": "boolean"
+        },
+        "DataAnnotationsToComments": {
+          "type": "boolean"
+        },
+        "DecorateDataModelWithDataContract": {
+          "type": "boolean"
+        },
+        "DataContractNamespace": {
+          "type": "string"
+        },
+        "DecorateDataModelWithSerializable": {
+          "type": "boolean"
+        },
+        "IEnumerableToArray": {
+          "type": "boolean"
+        },
+        "NotNullAttributeOnMethod": {
+          "type": "boolean"
+        },
+        "MaybeNullAttributeOnMethod": {
+          "type": "boolean"
+        },
+        "ClientLibraryProjectFolderName": {
+          "type": "string"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "GenerateBothAsyncAndSync": {
+          "type": "boolean"
+        },
+        "StringAsString": {
+          "type": "boolean"
+        },
+        "CamelCase": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "UseSystemTextJson": {
+          "type": "boolean"
+        },
+        "ContainerNameSuffix": {
+          "type": "string"
+        },
+        "UseEnsureSuccessStatusCodeEx": {
+          "type": "boolean"
+        },
+        "IncludeEnsureSuccessStatusCodeExBlock": {
+          "type": "boolean"
+        },
+        "HandleHttpRequestHeaders": {
+          "type": "boolean"
+        },
+        "CancellationTokenEnabled": {
+          "type": "boolean"
+        },
+        "JsMethodSuffixWithClrTypeName": {
+          "type": "boolean"
+        },
+        "Plugins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "AssemblyName": {
+                "type": "string"
+              },
+              "TargetDir": {
+                "type": "string"
+              },
+              "TSFile": {
+                "type": "string"
+              },
+              "ContentType": {
+                "type": "string"
+              },
+              "AsModule": {
+                "type": "boolean"
+              },
+              "ClientNamespaceSuffix": {
+                "type": "string"
+              },
+              "ContainerNameSuffix": {
+                "type": "string"
+              },
+              "DataAnnotationsToComments": {
+                "type": "boolean"
+              },
+              "HelpStrictMode": {
+                "type": "boolean"
+              },
+              "NgDateOnlyFormControlEnabled": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "arrayOfString": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

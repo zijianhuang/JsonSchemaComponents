@@ -1,4 +1,6 @@
-﻿namespace Fonlow.CodeDom.Web
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Fonlow.CodeDom.Web
 {   /// <summary>
 	/// Flagged options for cherry picking in various development processes.
 	/// </summary>
@@ -306,16 +308,19 @@
 	/// </summary>
 	public class JSPlugin
 	{
+		[Required]
 		public string AssemblyName { get; set; }
 
 		/// <summary>
 		/// Relative or absolute directory.
 		/// </summary>
+		[Required]
 		public string TargetDir { get; set; }
 
 		/// <summary>
 		/// Name of TypeScript file to be geneated under TargetDir.
 		/// </summary>
+		[Required]
 		public string TSFile { get; set; }
 
 		/// <summary>

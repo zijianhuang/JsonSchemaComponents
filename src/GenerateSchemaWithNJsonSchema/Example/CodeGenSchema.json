@@ -1,0 +1,318 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CodeGenSettings",
+  "definitions": {
+    "CodeGenOutputs": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ModelGenOutputs"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ClientLibraryProjectFolderName": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "FileName": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "GenerateBothAsyncAndSync": {
+              "type": "boolean"
+            },
+            "StringAsString": {
+              "type": "boolean"
+            },
+            "CamelCase": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "UseSystemTextJson": {
+              "type": "boolean"
+            },
+            "ContainerNameSuffix": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "UseEnsureSuccessStatusCodeEx": {
+              "type": "boolean"
+            },
+            "IncludeEnsureSuccessStatusCodeExBlock": {
+              "type": "boolean"
+            },
+            "HandleHttpRequestHeaders": {
+              "type": "boolean"
+            },
+            "CancellationTokenEnabled": {
+              "type": "boolean"
+            },
+            "JsMethodSuffixWithClrTypeName": {
+              "type": "boolean"
+            },
+            "Plugins": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "$ref": "#/definitions/JSPlugin"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "JSPlugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "AssemblyName": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "TargetDir": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "TSFile": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "ContentType": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "AsModule": {
+          "type": "boolean"
+        },
+        "ClientNamespaceSuffix": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "ContainerNameSuffix": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "DataAnnotationsToComments": {
+          "type": "boolean"
+        },
+        "HelpStrictMode": {
+          "type": "boolean"
+        },
+        "NgDateOnlyFormControlEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ModelGenOutputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "CSClientNamespaceSuffix": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "DataAnnotationsEnabled": {
+          "type": "boolean"
+        },
+        "DataAnnotationsToComments": {
+          "type": "boolean"
+        },
+        "DecorateDataModelWithDataContract": {
+          "type": "boolean"
+        },
+        "DataContractNamespace": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "DecorateDataModelWithSerializable": {
+          "type": "boolean"
+        },
+        "IEnumerableToArray": {
+          "type": "boolean"
+        },
+        "NotNullAttributeOnMethod": {
+          "type": "boolean"
+        },
+        "MaybeNullAttributeOnMethod": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CodeGenSettingsBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ApiSelections": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/CodeGenConfig"
+            }
+          ]
+        }
+      }
+    },
+    "CodeGenConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ExcludedControllerNames": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "DataModelAssemblyNames": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "DataModels": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/DataModel"
+          }
+        },
+        "CherryPickingMethods": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/CherryPickingMethods"
+            }
+          ]
+        },
+        "NamespacePrefixesOfGodAssemblyTypes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "AllDataModelAssemblyNames": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DataModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "AssemblyName": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "CherryPickingMethods": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/CherryPickingMethods"
+            }
+          ]
+        },
+        "DataAnnotationsToComments": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "CherryPickingMethods": {
+      "type": "integer",
+      "description": "",
+      "x-enumFlags": true,
+      "x-enumNames": [
+        "All",
+        "DataContract",
+        "NewtonsoftJson",
+        "Serializable",
+        "AspNet",
+        "NetCore",
+        "ApiOnly"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/CodeGenSettingsBase"
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ClientApiOutputs": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/CodeGenOutputs"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

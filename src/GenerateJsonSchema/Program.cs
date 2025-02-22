@@ -1,23 +1,45 @@
 ﻿using System.Text.Json.Nodes;
 using System.Text.Json;
 using Fonlow.CodeDom.Web;
-using System.Text.Json.Serialization;
 using System.Text.Json.Schema;
+using Fonlow.JsonSchema;
+using Fonlow.Cli;
 
 namespace GenerateJsonSchema
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		static int Main(string[] args)
 		{
-			Console.WriteLine("Generate JSON schema...");
-			Console.WriteLine("Accept parameter: filePath");
-			if (args.Length > 0)
+			var options = new Options();
+			var parser = new CommandLineParser(options);
+			Console.WriteLine(parser.ApplicationDescription);
+
+			parser.Parse();
+			if (parser.HasErrors)
 			{
-				var filePath = args[0];
-				CustomExtraction(filePath);
+				System.Diagnostics.Trace.TraceWarning(parser.ErrorMessage);
+				Console.WriteLine(parser.UsageInfo.GetOptionsAsString());
+				return 1;
+			}
+
+
+			if (options.Help)
+			{
+				Console.WriteLine(parser.UsageInfo.ToString());
+				// Console.ReadLine();
+				return 0;
+			}
+
+			//Console.WriteLine("Generate JSON schema...");
+			//Console.WriteLine("Accept parameter: filePath");
+			if (!string.IsNullOrEmpty(options.OutputPath))
+			{
+				CustomExtraction(options.OutputPath);
 				Console.WriteLine("Done.");
 			}
+
+			return 0;
 		}
 
 		public static void CustomExtraction(string filePath)

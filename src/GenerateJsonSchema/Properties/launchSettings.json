@@ -2,7 +2,7 @@
   "profiles": {
     "GenerateJsonSchema": {
       "commandName": "Project",
-      "commandLineArgs": "c:/temp/demoSchema.json"
+      "commandLineArgs": "/op=c:/temp/demoSchema.json"
     }
   }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using Fonlow.Cli;
-using Plossum.CommandLine;
+﻿using Plossum.CommandLine;
 
 namespace Fonlow.JsonSchema
 {
@@ -9,11 +7,11 @@ namespace Fonlow.JsonSchema
 	[CommandLineOptionGroup("other", Name = "Other")]
 	public class Options
 	{
-		public Options()
-		{
-		}
 		[CommandLineOption(Aliases = "C", Description = "Class name including namespace, e.g., /C=My.Namespace.MyClass")]
 		public string ClassName { get; set; }
+
+		[CommandLineOption(Aliases = "CF", Description = "Class file path in C# or VB.NET, e.g., /CF=c:/myCsharpClass.cs")]
+		public string ClassFile { get; set; }
 
 		[CommandLineOption(Aliases = "A", Description = "Assembly file name including file extension. e.g., /A=abc.dll")]
 		public string AssemblyFile { get; set; }

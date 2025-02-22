@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Fonlow.CodeDom.Web
+﻿namespace Fonlow.CodeDom.Web
 {   /// <summary>
 	/// Flagged options for cherry picking in various development processes.
 	/// </summary>

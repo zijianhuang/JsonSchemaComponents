@@ -2,10 +2,10 @@
 
 While there are variety of [JSON schema tools](https://json-schema.org/tools) since the introduction of [JSON schema](https://json-schema.org/), this project is focused on the following:
 
-1. Existing .NET (Framework) components.
+1. Existing .NET (Framework) components that can generate JSON schema from POCO classes or generate POCO classes from JSON Schema.
 1. Introduce locally run tools.
-1. Develop locally run tools.
-1. Compare with different components.
+1. Develop CLI tools.
+1. Compare with different components of generating JSON schema.
 
 
 ## Validation Tools
@@ -28,25 +28,21 @@ References:
 Go "Main Menu -> Edit -> Paste Special -> Paste JSON as Classes".
 
 
-## .NET Components For Generating Schema From C#
+## Generating Schema From C#
 
-Plain Old Classes can provide enough info for XML schema and JSON schema. This open source project provides side by side comparisons of these components.
+Plain Old Classes can provide enough info for XML schema and JSON schema. This open source project provides side by side comparisons of some popular components of generating schema from a POCO class.
 
-### .NET 9
+### [.NET 9 Extract SChema](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema)
 
-References:
-* https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema
 
 ### NJsonSchema
 
 References:
 * https://github.com/RicoSuter/NJsonSchema
 
-### NewtonSoft.Json
+### [NewtonSoft.Json](https://www.newtonsoft.com/jsonschema)
 
-References:
-* https://www.newtonsoft.com/jsonschema
-
+The vendor provides an online validator on: https://www.jsonschemavalidator.net/
 
 ### JSON Everything
 

@@ -1,8 +1,10 @@
 ﻿using Fonlow.Cli;
 using Fonlow.JsonSchema;
-using NJsonSchema;
+using Json.Schema;
+using Json.Schema.Generation;
+using System.Text.Json;
 
-namespace GenerateSchemaWithNJsonSchema
+namespace GenerateSchemaWithJsonSchemaNet
 {
 	internal class Program
 	{
@@ -45,9 +47,15 @@ namespace GenerateSchemaWithNJsonSchema
 				return false;
 			}
 
-			var schema = JsonSchema.FromType(type);
-			var schemaData = schema.ToJson(Newtonsoft.Json.Formatting.Indented);
-			File.WriteAllText(outputPath, schemaData);
+			var schemaBuilder = new JsonSchemaBuilder();
+			JsonSchema schema = schemaBuilder.FromType(type).Build();
+			var converter = new SchemaJsonConverter();
+			using var fs = new FileStream(outputPath, FileMode.Create);
+			using var writer = new Utf8JsonWriter(fs, new JsonWriterOptions
+			{
+				Indented = true,
+			});
+			converter.Write(writer, schema, new JsonSerializerOptions{ WriteIndented=true});
 			return true;
 		}
 	}

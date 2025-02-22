@@ -2,7 +2,7 @@
   "profiles": {
     "GenerateJsonSchema": {
       "commandName": "Project",
-      "commandLineArgs": "/op=c:/temp/demoSchema.json"
+      "commandLineArgs": "/op=c:/temp/demoSchema.json /c=Fonlow.CodeDom.Web.CodeGenSettings /a=DataModels.dll "
     }
   }
 }

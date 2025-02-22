@@ -15,13 +15,13 @@ namespace Fonlow.JsonSchema
 		[CommandLineOption(Aliases = "C", Description = "Class name including namespace, e.g., /C=My.Namespace.MyClass")]
 		public string ClassName { get; set; }
 
-		[CommandLineOption(Aliases = "A", Description = "Assembly file name including file extension. e.g., /AF=abc.dll")]
+		[CommandLineOption(Aliases = "A", Description = "Assembly file name including file extension. e.g., /A=abc.dll")]
 		public string AssemblyFile { get; set; }
 
 		[CommandLineOption(Aliases = "OP", Description = "File path of the JSON schema output. e.g., /OP=c:/temp/MyJsonSchema.json")]
 		public string OutputPath { get; set; }
 
-		[CommandLineOption(Aliases = "h ?", Name = "Help", Description = "Shows this help text", GroupId = "other")]
+		[CommandLineOption(Aliases = "h ?", Name = "Help", Description = "Shows this help text")]
 		public bool Help
 		{
 			get;

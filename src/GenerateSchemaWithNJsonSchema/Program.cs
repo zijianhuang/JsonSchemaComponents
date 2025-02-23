@@ -1,5 +1,4 @@
-﻿using Fonlow.Cli;
-using Fonlow.JsonSchema;
+﻿using Fonlow.JsonSchema;
 using NJsonSchema;
 
 namespace GenerateSchemaWithNJsonSchema
@@ -8,33 +7,7 @@ namespace GenerateSchemaWithNJsonSchema
 	{
 		static int Main(string[] args)
 		{
-			var options = new Options();
-			var parser = new CommandLineParser(options);
-			Console.WriteLine(parser.ApplicationDescription);
-
-			parser.Parse();
-			if (parser.HasErrors)
-			{
-				Console.WriteLine(parser.ErrorMessage);
-				Console.WriteLine(parser.UsageInfo.GetOptionsAsString());
-				return 1;
-			}
-
-
-			if (options.Help)
-			{
-				Console.WriteLine(parser.UsageInfo.ToString());
-				// Console.ReadLine();
-				return 0;
-			}
-
-			if (!string.IsNullOrEmpty(options.OutputPath))
-			{
-				var r = CustomExtraction(options);
-				Console.WriteLine(r ? "Done." : "Failed.");
-			}
-
-			return 0;
+			return ProgramCommon.Execute(CustomExtraction);
 		}
 
 		static bool CustomExtraction(Options options)

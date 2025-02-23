@@ -155,7 +155,7 @@ It respects RequiredAttribute but not others like JsonRequiredAttribute.
     }
 ```
 
-And this is unfriendly to [flagged enum (bitwise)](https://github.com/microsoft/OpenAPI/blob/main/extensions/x-ms-enum-flags.md), while JSON Schema standard body apparently hasn't reach aggrement, according to https://github.com/json-schema-org/json-schema-vocabularies/issues/24.
+While there is `"x-enumFlags": true` as mentioned on [flagged enum (bitwise)](https://github.com/microsoft/OpenAPI/blob/main/extensions/x-ms-enum-flags.md), JSON Schema standard body apparently hasn't reach and aggrement, according to https://github.com/json-schema-org/json-schema-vocabularies/issues/24. Not sure which editor will respect this?
 
 ### Nullable boolean and Alike
 
@@ -333,7 +333,7 @@ Online validator on: https://jsonschema.net/
         },
 ```
 
-However, this is unfriendly to flagged enum.
+However, this is unfriendly to flagged enum and int.
 
 ### For Required Field
 
@@ -345,4 +345,10 @@ For nullable boolean and alike, all can generate correct codes allowing null.
 
 Some schemas generated declares [Schema Identification](https://json-schema.org/understanding-json-schema/structuring#schema-identification), while others don't by default.
 
-NJsonSchema uses literal enum.
+NJsonSchema uses literal enum and int, seemly supports flagged enum, but a good editor respecting this is not yet found.
+
+JSON Everything exports literal enum. Not good.
+
+So, basically for my cases, particular for the CodeGen settings, I can use only what exported by .NET 9 or NewtonSoft JSON Schema.
+
+So the verdict is, `Newtonsoft.Json.Schema.Generation` is the best, at least for my cases. .NET 9 Schema Export is the 2nd best.

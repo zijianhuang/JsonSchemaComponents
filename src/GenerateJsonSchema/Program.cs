@@ -32,30 +32,31 @@ namespace GenerateJsonSchema
 
 			if (!string.IsNullOrEmpty(options.OutputPath))
 			{
-				var r = CustomExtraction(options.OutputPath, options.AssemblyFile, options.ClassName);
+				var r = CustomExtraction(options);
 				Console.WriteLine(r ? "Done." : "Failed.");
 			}
 
 			return 0;
 		}
 
-		static bool CustomExtraction(string outputPath, string assemblyFilePath, string className)
+		static bool CustomExtraction(Options options)
 		{
-			var type = TypeHelper.GetTypeFromAssembly(assemblyFilePath, className);
+			var type = TypeHelper.GetTypeFromAssembly(options.AssemblyFile, options.ClassName);
 			if (type == null)
 			{
 				return false;
 			}
 
-			JsonSerializerOptions options = new(JsonSerializerOptions.Default)
+			JsonSerializerOptions serializaerOptions = new(JsonSerializerOptions.Default)
 			{
 				//PropertyNamingPolicy = JsonNamingPolicy.KebabCaseUpper,
 				//NumberHandling = JsonNumberHandling.WriteAsString,
 				//UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
 			};
 
-			JsonNode schema = options.GetJsonSchemaAsNode(type);
-			using var fs = new FileStream(outputPath, FileMode.Create);
+			JsonNode schema = serializaerOptions.GetJsonSchemaAsNode(type);
+			// no interface for title and description
+			using var fs = new FileStream(options.OutputPath, FileMode.Create);
 			using var writer = new Utf8JsonWriter(fs, new JsonWriterOptions
 			{
 				Indented = true,

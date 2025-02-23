@@ -32,30 +32,32 @@ namespace GenerateSchemaWithJsonSchemaNet
 
 			if (!string.IsNullOrEmpty(options.OutputPath))
 			{
-				var r = CustomExtraction(options.OutputPath, options.AssemblyFile, options.ClassName);
+				var r = CustomExtraction(options);
 				Console.WriteLine(r ? "Done." : "Failed.");
 			}
 
 			return 0;
 		}
 
-		static bool CustomExtraction(string outputPath, string assemblyFilePath, string className)
+		static bool CustomExtraction(Options options)
 		{
-			var type = TypeHelper.GetTypeFromAssembly(assemblyFilePath, className);
+			var type = TypeHelper.GetTypeFromAssembly(options.AssemblyFile, options.ClassName);
 			if (type == null)
 			{
 				return false;
 			}
 
-			var schemaBuilder = new JsonSchemaBuilder();
+			var schemaBuilder = new JsonSchemaBuilder()
+				.Title(options.Title)
+				.Description(options.Description);
 			JsonSchema schema = schemaBuilder.FromType(type).Build();
 			var converter = new SchemaJsonConverter();
-			using var fs = new FileStream(outputPath, FileMode.Create);
+			using var fs = new FileStream(options.OutputPath, FileMode.Create);
 			using var writer = new Utf8JsonWriter(fs, new JsonWriterOptions
 			{
 				Indented = true,
 			});
-			converter.Write(writer, schema, new JsonSerializerOptions{ WriteIndented=true});
+			converter.Write(writer, schema, new JsonSerializerOptions { WriteIndented = true });
 			return true;
 		}
 	}

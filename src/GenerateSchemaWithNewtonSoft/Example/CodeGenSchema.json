@@ -1,10 +1,9 @@
 {
+  "title": "CodeGen Meta of WebApiClientGen",
+  "description": "POST to CodeGen controller",
   "definitions": {
     "CodeGenConfig": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "ExcludedControllerNames": {
           "type": [
@@ -69,15 +68,7 @@
             ]
           }
         }
-      },
-      "required": [
-        "ExcludedControllerNames",
-        "DataModelAssemblyNames",
-        "DataModels",
-        "CherryPickingMethods",
-        "NamespacePrefixesOfGodAssemblyTypes",
-        "AllDataModelAssemblyNames"
-      ]
+      }
     },
     "CodeGenOutputs": {
       "type": [
@@ -98,10 +89,16 @@
           ]
         },
         "GenerateBothAsyncAndSync": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "StringAsString": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "CamelCase": {
           "type": [
@@ -110,7 +107,10 @@
           ]
         },
         "UseSystemTextJson": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "ContainerNameSuffix": {
           "type": [
@@ -119,19 +119,34 @@
           ]
         },
         "UseEnsureSuccessStatusCodeEx": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "IncludeEnsureSuccessStatusCodeExBlock": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "HandleHttpRequestHeaders": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "CancellationTokenEnabled": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "JsMethodSuffixWithClrTypeName": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "Plugins": {
           "type": [
@@ -175,31 +190,7 @@
         "MaybeNullAttributeOnMethod": {
           "type": "boolean"
         }
-      },
-      "required": [
-        "ClientLibraryProjectFolderName",
-        "FileName",
-        "GenerateBothAsyncAndSync",
-        "StringAsString",
-        "CamelCase",
-        "UseSystemTextJson",
-        "ContainerNameSuffix",
-        "UseEnsureSuccessStatusCodeEx",
-        "IncludeEnsureSuccessStatusCodeExBlock",
-        "HandleHttpRequestHeaders",
-        "CancellationTokenEnabled",
-        "JsMethodSuffixWithClrTypeName",
-        "Plugins",
-        "CSClientNamespaceSuffix",
-        "DataAnnotationsEnabled",
-        "DataAnnotationsToComments",
-        "DecorateDataModelWithDataContract",
-        "DataContractNamespace",
-        "DecorateDataModelWithSerializable",
-        "IEnumerableToArray",
-        "NotNullAttributeOnMethod",
-        "MaybeNullAttributeOnMethod"
-      ]
+      }
     },
     "DataModel": {
       "type": [
@@ -225,12 +216,7 @@
             "null"
           ]
         }
-      },
-      "required": [
-        "AssemblyName",
-        "CherryPickingMethods",
-        "DataAnnotationsToComments"
-      ]
+      }
     },
     "JSPlugin": {
       "type": [
@@ -284,14 +270,7 @@
       "required": [
         "AssemblyName",
         "TargetDir",
-        "TSFile",
-        "ContentType",
-        "AsModule",
-        "ClientNamespaceSuffix",
-        "ContainerNameSuffix",
-        "DataAnnotationsToComments",
-        "HelpStrictMode",
-        "NgDateOnlyFormControlEnabled"
+        "AsModule"
       ]
     }
   },
@@ -305,7 +284,6 @@
     }
   },
   "required": [
-    "ClientApiOutputs",
     "ApiSelections"
   ]
 }

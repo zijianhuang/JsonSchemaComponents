@@ -19,6 +19,12 @@ namespace Fonlow.JsonSchema
 		[CommandLineOption(Aliases = "OP", Description = "File path of the JSON schema output. e.g., /OP=c:/temp/MyJsonSchema.json")]
 		public string OutputPath { get; set; }
 
+		[CommandLineOption(Aliases = "T", Description = "Title of schema. e.g., /t='CodeGen meta of WebApiClientGen'")]
+		public string Title { get; set; }
+
+		[CommandLineOption(Aliases = "D", Description = "Description of schema. e.g., /d 'Post to CodeGen controller of Web API'")]
+		public string Description { get; set; }
+
 		[CommandLineOption(Aliases = "h ?", Name = "Help", Description = "Shows this help text")]
 		public bool Help
 		{

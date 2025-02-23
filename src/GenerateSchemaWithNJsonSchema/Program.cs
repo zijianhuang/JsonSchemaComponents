@@ -15,7 +15,7 @@ namespace GenerateSchemaWithNJsonSchema
 			parser.Parse();
 			if (parser.HasErrors)
 			{
-				System.Diagnostics.Trace.TraceWarning(parser.ErrorMessage);
+				Console.WriteLine(parser.ErrorMessage);
 				Console.WriteLine(parser.UsageInfo.GetOptionsAsString());
 				return 1;
 			}
@@ -30,24 +30,26 @@ namespace GenerateSchemaWithNJsonSchema
 
 			if (!string.IsNullOrEmpty(options.OutputPath))
 			{
-				var r = CustomExtraction(options.OutputPath, options.AssemblyFile, options.ClassName);
+				var r = CustomExtraction(options);
 				Console.WriteLine(r ? "Done." : "Failed.");
 			}
 
 			return 0;
 		}
 
-		static bool CustomExtraction(string outputPath, string assemblyFilePath, string className)
+		static bool CustomExtraction(Options options)
 		{
-			var type = TypeHelper.GetTypeFromAssembly(assemblyFilePath, className);
+			var type = TypeHelper.GetTypeFromAssembly(options.AssemblyFile, options.ClassName);
 			if (type == null)
 			{
 				return false;
 			}
 
 			var schema = JsonSchema.FromType(type);
+			schema.Title = options.Title;
+			schema.Description = options.Description;
 			var schemaData = schema.ToJson(Newtonsoft.Json.Formatting.Indented);
-			File.WriteAllText(outputPath, schemaData);
+			File.WriteAllText(options.OutputPath, schemaData);
 			return true;
 		}
 	}

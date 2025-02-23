@@ -1,17 +1,34 @@
 {
+  "title": "CodeGen Meta of WebApiClientGen",
+  "description": "POST to CodeGen controller",
   "type": "object",
   "properties": {
     "ApiSelections": {
       "type": "object",
       "properties": {
         "ExcludedControllerNames": {
-          "$ref": "#/$defs/arrayOfString"
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
         },
         "DataModelAssemblyNames": {
-          "$ref": "#/$defs/arrayOfString"
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
         },
         "DataModels": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "items": {
             "type": "object",
             "properties": {
@@ -36,7 +53,10 @@
                   "null"
                 ]
               }
-            }
+            },
+            "required": [
+              "AssemblyName"
+            ]
           }
         },
         "CherryPickingMethods": {
@@ -52,10 +72,22 @@
           ]
         },
         "NamespacePrefixesOfGodAssemblyTypes": {
-          "$ref": "#/$defs/arrayOfString"
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
         },
         "AllDataModelAssemblyNames": {
-          "$ref": "#/$defs/arrayOfString"
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -63,7 +95,10 @@
       "type": "object",
       "properties": {
         "CSClientNamespaceSuffix": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "DataAnnotationsEnabled": {
           "type": "boolean"
@@ -75,7 +110,10 @@
           "type": "boolean"
         },
         "DataContractNamespace": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "DecorateDataModelWithSerializable": {
           "type": "boolean"
@@ -90,16 +128,28 @@
           "type": "boolean"
         },
         "ClientLibraryProjectFolderName": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "FileName": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "GenerateBothAsyncAndSync": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "StringAsString": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "CamelCase": {
           "type": [
@@ -108,28 +158,52 @@
           ]
         },
         "UseSystemTextJson": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "ContainerNameSuffix": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "UseEnsureSuccessStatusCodeEx": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "IncludeEnsureSuccessStatusCodeExBlock": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "HandleHttpRequestHeaders": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "CancellationTokenEnabled": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "JsMethodSuffixWithClrTypeName": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "Plugins": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "items": {
             "type": "object",
             "properties": {
@@ -143,16 +217,25 @@
                 "type": "string"
               },
               "ContentType": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "AsModule": {
                 "type": "boolean"
               },
               "ClientNamespaceSuffix": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "ContainerNameSuffix": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "DataAnnotationsToComments": {
                 "type": "boolean"
@@ -163,18 +246,20 @@
               "NgDateOnlyFormControlEnabled": {
                 "type": "boolean"
               }
-            }
+            },
+            "required": [
+              "AssemblyName",
+              "TargetDir",
+              "TSFile",
+              "AsModule"
+            ]
           }
         }
       }
     }
   },
-  "$defs": {
-    "arrayOfString": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  }
+  "required": [
+    "ApiSelections",
+    "ClientApiOutputs"
+  ]
 }

@@ -243,7 +243,12 @@ However, all other sibling fields are required:
         "NgDateOnlyFormControlEnabled"
       ]
 ```
-I am not sure yet if there's a setting in the component to correct, since it might be possible that this component prefer nullable object of C# 8.
+
+To avoid, need to do this:
+```csharp
+JSchemaGenerator generator = new JSchemaGenerator();
+generator.DefaultRequired = Required.Default; 
+```
 
 ### For enum field
 
@@ -332,7 +337,7 @@ However, this is unfriendly to flagged enum.
 
 ### For Required Field
 
-It does not care about JsonRequiredAttribute and RequiredAttribute. 
+It does not care about JsonRequiredAttribute and RequiredAttribute, while respecting the "required" keyword of C#.
 
 ## Summary
 

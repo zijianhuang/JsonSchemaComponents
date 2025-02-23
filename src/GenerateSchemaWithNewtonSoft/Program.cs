@@ -17,7 +17,7 @@ namespace GenerateSchemaWithNewtonSoft
 			parser.Parse();
 			if (parser.HasErrors)
 			{
-				System.Diagnostics.Trace.TraceWarning(parser.ErrorMessage);
+				Console.WriteLine(parser.ErrorMessage);
 				Console.WriteLine(parser.UsageInfo.GetOptionsAsString());
 				return 1;
 			}
@@ -32,24 +32,28 @@ namespace GenerateSchemaWithNewtonSoft
 
 			if (!string.IsNullOrEmpty(options.OutputPath))
 			{
-				var r = CustomExtraction(options.OutputPath, options.AssemblyFile, options.ClassName);
+				var r = CustomExtraction(options);
 				Console.WriteLine(r ? "Done." : "Failed.");
 			}
 
 			return 0;
 		}
 
-		static bool CustomExtraction(string outputPath, string assemblyFilePath, string className)
+		static bool CustomExtraction(Options options)
 		{
-			var type = TypeHelper.GetTypeFromAssembly(assemblyFilePath, className);
+			var type = TypeHelper.GetTypeFromAssembly(options.AssemblyFile, options.ClassName);
 			if (type == null)
 			{
 				return false;
 			}
 
 			JSchemaGenerator generator = new JSchemaGenerator();
+			generator.DefaultRequired = Required.Default; //otherwise, most fields particularily string fields are required.
 			JSchema schema = generator.Generate(type);
-			using var fs = new FileStream(outputPath, FileMode.Create);
+			schema.Title = options.Title;
+			schema.Description = options.Description;
+			//schema.SchemaVersion = SchemaVersion.Draft6.;
+			using var fs = new FileStream(options.OutputPath, FileMode.Create);
 			using var writer = new StreamWriter(fs);
 			using var jsonTextWriter = new JsonTextWriter(writer){ Formatting= Formatting.Indented };
 			schema.WriteTo(jsonTextWriter);

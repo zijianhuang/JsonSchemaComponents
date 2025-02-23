@@ -317,6 +317,9 @@
     {
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "ClientApiOutputs"
+      ],
       "properties": {
         "ClientApiOutputs": {
           "$ref": "#/definitions/CodeGenOutputs"

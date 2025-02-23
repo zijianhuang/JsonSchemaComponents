@@ -99,7 +99,7 @@ Overall it is good.
 
 ## [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
 
-It declares schema version and a default title.
+It declares schema version and a default title. And both VS and VS Code are not working well with the draft-04 schema, keeping saying whatever property not allowed.
 
 ```json
 {
@@ -216,7 +216,7 @@ Therefore:
 * https://jsonschema.dev/ reports 26 errors, however, this validator is "The home of JSON Schema validation right in your browser 🚧 Alpha 🚧 draft-7 only"
 
 ### For Required Field
-It honours JsonRequiredAttribute and RequiredAttribute, but not `DataMember(IsRequired = true)` and generate the following:
+It honours JsonRequiredAttribute and RequiredAttribute, but not `DataMember(IsRequired = true)` and not the `required` keyword, and generate the following:
 ```json
         "AssemblyName": {
           "type": "string"

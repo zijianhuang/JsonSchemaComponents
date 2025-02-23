@@ -82,6 +82,8 @@ namespace Fonlow.CodeDom.Web
 	/// </summary>
 	public class CodeGenSettings : CodeGenSettingsBase
 	{
+		[Required]
+		[JsonRequired]
 		public required CodeGenOutputs ClientApiOutputs { get; set; }
 	}
 

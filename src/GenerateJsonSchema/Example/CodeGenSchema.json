@@ -119,7 +119,9 @@
               }
             },
             "required": [
-              "AssemblyName"
+              "AssemblyName",
+              "TargetDir",
+              "TSFile"
             ]
           }
         },
@@ -217,7 +219,11 @@
                   "null"
                 ]
               }
-            }
+            },
+            "required": [
+              "AssemblyName",
+              "CherryPickingMethods"
+            ]
           }
         },
         "CherryPickingMethods": {

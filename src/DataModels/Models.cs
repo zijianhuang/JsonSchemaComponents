@@ -159,8 +159,10 @@ namespace Fonlow.CodeDom.Web
 
 	public class DataModel
 	{
+		[JsonRequired]
 		public string AssemblyName { get; set; }
 
+		[JsonRequired]
 		public CherryPickingMethods? CherryPickingMethods { get; set; }
 
 		/// <summary>
@@ -318,12 +320,14 @@ namespace Fonlow.CodeDom.Web
 		/// Relative or absolute directory.
 		/// </summary>
 		[Required]
+		[JsonRequired] 
 		public string TargetDir { get; set; }
 
 		/// <summary>
 		/// Name of TypeScript file to be geneated under TargetDir.
 		/// </summary>
-		[DataMember(IsRequired = true)]
+		//[DataMember(IsRequired = true)] nobody likes it.
+		[JsonRequired]
 		public string TSFile { get; set; }
 
 		/// <summary>

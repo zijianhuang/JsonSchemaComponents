@@ -123,22 +123,39 @@ It declares schema version and a default title.
             },
 ```
 
+### For Required Field
+
+It respects RequiredAttribute but not others like JsonRequiredAttribute.
+
 ### For Enum fields
 
 ```json
-        "CherryPickingMethods": {
-          "enum": [
-            "All",
-            "DataContract",
-            "NewtonsoftJson",
-            "Serializable",
-            "AspNet",
-            "NetCore",
-            "ApiOnly",
-            null
-          ]
-        },
+    "CherryPickingMethods": {
+      "type": "integer",
+      "description": "",
+      "x-enumFlags": true,
+      "x-enumNames": [
+        "All",
+        "DataContract",
+        "NewtonsoftJson",
+        "Serializable",
+        "AspNet",
+        "NetCore",
+        "ApiOnly"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    }
 ```
+
+And this is unfriendly to [flagged enum (bitwise)](https://github.com/microsoft/OpenAPI/blob/main/extensions/x-ms-enum-flags.md), while JSON Schema standard body apparently hasn't reach aggrement, according to https://github.com/json-schema-org/json-schema-vocabularies/issues/24.
 
 ### Nullable boolean and Alike
 
@@ -228,6 +245,17 @@ However, all other sibling fields are required:
 ```
 I am not sure yet if there's a setting in the component to correct, since it might be possible that this component prefer nullable object of C# 8.
 
+### For enum field
+
+```json
+        "CherryPickingMethods": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+```
+
 ### Nullable boolean and Alike
 
 ```json
@@ -283,9 +311,28 @@ Online validator on: https://jsonschema.net/
         },
 ```
 
+### For enum Field
+
+```json
+        "CherryPickingMethods": {
+          "enum": [
+            "All",
+            "DataContract",
+            "NewtonsoftJson",
+            "Serializable",
+            "AspNet",
+            "NetCore",
+            "ApiOnly",
+            null
+          ]
+        },
+```
+
+However, this is unfriendly to flagged enum.
+
 ### For Required Field
 
-It does not care about JsonRequiredAttribute and RequiredAttribute. However, all string fields are required:
+It does not care about JsonRequiredAttribute and RequiredAttribute. 
 
 ## Summary
 

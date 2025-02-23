@@ -40,8 +40,9 @@ Plain Old Classes can provide enough info for XML schema and JSON schema. This o
 
 ### [NewtonSoft.Json](https://www.newtonsoft.com/jsonschema)
 
-Online validator on: https://www.jsonschemavalidator.net/
+Online validator on: https://www.jsonschemavalidator.net/ which can validate draft v3 to 2020-12.
 
 ### [JSON Everything](https://json-everything.net/)
 
-Online validator on: https://jsonschema.net/
+Online validator on: https://json-everything.net/json-schema for Draft 6 to 2020-12
+

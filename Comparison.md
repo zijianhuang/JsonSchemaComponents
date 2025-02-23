@@ -39,7 +39,12 @@ The comparison is done through the following:
         },
 ```
 
-### Nullable boolean and Alike
+By default:
+* All string fields are nullable and can be absent, unless required.
+* All value type fields can be absent and must have a value, unless nullable, unless required.
+
+
+### Nullable Value Type
 
 ```json
         "StringAsString": {
@@ -90,9 +95,11 @@ Remarks:
 ```
 
 
-Overall it is good
+Overall it is good.
 
 ## [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
+
+It declares schema version and a default title.
 
 ```json
 {
@@ -116,6 +123,23 @@ Overall it is good
             },
 ```
 
+### For Enum fields
+
+```json
+        "CherryPickingMethods": {
+          "enum": [
+            "All",
+            "DataContract",
+            "NewtonsoftJson",
+            "Serializable",
+            "AspNet",
+            "NetCore",
+            "ApiOnly",
+            null
+          ]
+        },
+```
+
 ### Nullable boolean and Alike
 
 ```json
@@ -132,6 +156,47 @@ Overall it is good
 
 ## [NewtonSoft.Json](https://www.newtonsoft.com/jsonschema)
 
+```json
+{
+  "definitions": {
+    "CodeGenConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "ExcludedControllerNames": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "DataModelAssemblyNames": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+```
+
+By default:
+* All string fields are required. This is undesired.
+
+Therefore:
+* https://www.jsonschemavalidator.net/ reports 5 errors
+* https://jsonschema.dev/ reports 26 errors, however, this validator is "The home of JSON Schema validation right in your browser 🚧 Alpha 🚧 draft-7 only"
 
 ### For Required Field
 It honours JsonRequiredAttribute and RequiredAttribute, but not `DataMember(IsRequired = true)` and generate the following:
@@ -225,3 +290,7 @@ It does not care about JsonRequiredAttribute and RequiredAttribute. However, all
 ## Summary
 
 For nullable boolean and alike, all can generate correct codes allowing null.
+
+Some schemas generated declares [Schema Identification](https://json-schema.org/understanding-json-schema/structuring#schema-identification), while others don't by default.
+
+NJsonSchema uses literal enum.

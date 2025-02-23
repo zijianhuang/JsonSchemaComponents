@@ -239,16 +239,10 @@
       ],
       "properties": {
         "AssemblyName": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "TargetDir": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "TSFile": {
           "type": [

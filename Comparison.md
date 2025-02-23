@@ -39,14 +39,189 @@ The comparison is done through the following:
         },
 ```
 
+### Nullable boolean and Alike
+
+```json
+        "StringAsString": {
+          "type": "boolean"
+        },
+        "CamelCase": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+```
+
+### For Required Field
+
+It honours JsonRequiredAttribute of .NET, and create the following:
+
+```json
+            "properties": {
+              "AssemblyName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+
+            },
+            "required": [
+              "AssemblyName"
+            ]
+```
+
+Remarks:
+* Visual Studio Code does not care about the missing required field.
+* Visual Studio cares and enforces. For new entry, only after inputting the required fields, the optional fields will appear in intellisense.
+* https://www.jsonschemavalidator.net/ pick the missing field.
+
+
+### For Enum Field
+
+```json
+              "CherryPickingMethods": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+```
+
+
 Overall it is good
 
 ## [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
 
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CodeGenSettings",
+  "definitions": {
+    "CodeGenOutputs": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ModelGenOutputs"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ClientLibraryProjectFolderName": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+```
+
+### Nullable boolean and Alike
+
+```json
+            "StringAsString": {
+              "type": "boolean"
+            },
+            "CamelCase": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+```
+
 ## [NewtonSoft.Json](https://www.newtonsoft.com/jsonschema)
 
-Online validator on: https://www.jsonschemavalidator.net/
 
+### For Required Field
+It honours JsonRequiredAttribute and RequiredAttribute, but not `DataMember(IsRequired = true)` and generate the following:
+```json
+        "AssemblyName": {
+          "type": "string"
+        },
+```
+
+Remarks:
+* In Visual Studio Code, giving it null the editor won't complain.
+* Visual Studio can pick the invalid null value.
+* https://www.jsonschemavalidator.net/ pick the missing field, and the invalid null value.
+
+However, all other sibling fields are required:
+```json
+      "required": [
+        "AssemblyName",
+        "TargetDir",
+        "TSFile",
+        "ContentType",
+        "AsModule",
+        "ClientNamespaceSuffix",
+        "ContainerNameSuffix",
+        "DataAnnotationsToComments",
+        "HelpStrictMode",
+        "NgDateOnlyFormControlEnabled"
+      ]
+```
+I am not sure yet if there's a setting in the component to correct, since it might be possible that this component prefer nullable object of C# 8.
+
+### Nullable boolean and Alike
+
+```json
+        "StringAsString": {
+          "type": "boolean"
+        },
+        "CamelCase": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+```
 ## [JSON Everything](https://json-everything.net/)
 
 Online validator on: https://jsonschema.net/
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "ApiSelections": {
+      "type": "object",
+      "properties": {
+        "ExcludedControllerNames": {
+          "$ref": "#/$defs/arrayOfString"
+        },
+        "DataModelAssemblyNames": {
+          "$ref": "#/$defs/arrayOfString"
+        },
+        "DataModels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "AssemblyName": {
+                "type": "string"
+              },
+
+```
+
+### Nullable boolean and alike
+
+```json
+        "StringAsString": {
+          "type": "boolean"
+        },
+        "CamelCase": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+```
+
+### For Required Field
+
+It does not care about JsonRequiredAttribute and RequiredAttribute. However, all string fields are required:
+
+## Summary
+
+For nullable boolean and alike, all can generate correct codes allowing null.

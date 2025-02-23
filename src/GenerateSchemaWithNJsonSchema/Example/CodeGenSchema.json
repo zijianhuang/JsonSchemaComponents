@@ -75,18 +75,18 @@
     "JSPlugin": {
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "AssemblyName",
+        "TargetDir"
+      ],
       "properties": {
         "AssemblyName": {
-          "type": [
-            "null",
-            "string"
-          ]
+          "type": "string",
+          "minLength": 1
         },
         "TargetDir": {
-          "type": [
-            "null",
-            "string"
-          ]
+          "type": "string",
+          "minLength": 1
         },
         "TSFile": {
           "type": [

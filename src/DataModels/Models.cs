@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Fonlow.CodeDom.Web
 {   /// <summary>
@@ -309,6 +311,7 @@ namespace Fonlow.CodeDom.Web
 	public class JSPlugin
 	{
 		[Required]
+		[JsonRequired] //.NET Extract Schema like this
 		public string AssemblyName { get; set; }
 
 		/// <summary>
@@ -320,7 +323,7 @@ namespace Fonlow.CodeDom.Web
 		/// <summary>
 		/// Name of TypeScript file to be geneated under TargetDir.
 		/// </summary>
-		[Required]
+		[DataMember(IsRequired = true)]
 		public string TSFile { get; set; }
 
 		/// <summary>

@@ -208,9 +208,6 @@ While there is `"x-enumFlags": true` as mentioned on [flagged enum (bitwise)](ht
         },
 ```
 
-By default:
-* All string fields are required. This is undesired.
-
 Therefore:
 * https://www.jsonschemavalidator.net/ reports 5 errors
 * https://jsonschema.dev/ reports 26 errors, however, this validator is "The home of JSON Schema validation right in your browser 🚧 Alpha 🚧 draft-7 only"
@@ -228,7 +225,7 @@ Remarks:
 * Visual Studio can pick the invalid null value.
 * https://www.jsonschemavalidator.net/ pick the missing field, and the invalid null value.
 
-However, all other sibling fields are required:
+However, all other sibling fields are required by default:
 ```json
       "required": [
         "AssemblyName",
@@ -348,6 +345,8 @@ Some schemas generated declares [Schema Identification](https://json-schema.org/
 NJsonSchema uses literal enum and int, seemly supports flagged enum, but a good editor respecting this is not yet found.
 
 JSON Everything exports literal enum. Not good.
+
+NewtonJson and NJsonSchema can read what declared in `DescriptionAttribute` and make it become the Description field of the schema, while Visual Studio Code displays Description.
 
 So, basically for my cases, particular for the CodeGen settings, I can use only what exported by .NET 9 or NewtonSoft JSON Schema.
 

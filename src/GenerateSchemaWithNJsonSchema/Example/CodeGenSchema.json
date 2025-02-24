@@ -196,7 +196,12 @@
       ],
       "properties": {
         "ApiSelections": {
-          "$ref": "#/definitions/CodeGenConfig"
+          "description": "Cherry picking of data models and API controllers.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CodeGenConfig"
+            }
+          ]
         }
       }
     },
@@ -218,6 +223,7 @@
             "array",
             "null"
           ],
+          "description": "Exclusive to DataModels.",
           "items": {
             "type": "string"
           }
@@ -227,6 +233,7 @@
             "array",
             "null"
           ],
+          "description": "Exclusive to DataModelAssemblyNames",
           "items": {
             "$ref": "#/definitions/DataModel"
           }
@@ -322,7 +329,12 @@
       ],
       "properties": {
         "ClientApiOutputs": {
-          "$ref": "#/definitions/CodeGenOutputs"
+          "description": "Options of output",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CodeGenOutputs"
+            }
+          ]
         }
       }
     }

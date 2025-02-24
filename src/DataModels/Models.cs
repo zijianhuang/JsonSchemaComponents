@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Fonlow.CodeDom.Web
@@ -74,6 +74,7 @@ namespace Fonlow.CodeDom.Web
 	{
 		[Required]
 		[JsonRequired]
+		[Description("Cherry picking of data models and API controllers.")]
 		public required CodeGenConfig ApiSelections { get; set; }
 	}
 
@@ -84,6 +85,7 @@ namespace Fonlow.CodeDom.Web
 	{
 		[Required]
 		[JsonRequired]
+		[Description("Options of output")]
 		public required CodeGenOutputs ClientApiOutputs { get; set; }
 	}
 
@@ -104,6 +106,7 @@ namespace Fonlow.CodeDom.Web
 		/// An assembly should appear in either DataModelAssemblyNames or DataModels, not both.
 		/// If the Web API assembly is also included, it should be behind those data model assemblies that it depends on.
 		/// </summary>
+		[Description("Exclusive to DataModels.")]
 		public string[]? DataModelAssemblyNames
 		{
 			get { return dataModelAssemblyNames; }
@@ -121,6 +124,7 @@ namespace Fonlow.CodeDom.Web
 		/// Similar to DataModelAssemblyNames however, each assembly could have a CherryPickingMethods. An assembly should appear in either DataModelAssemblyNames or DataModels, not both.
 		/// If the Web API assembly is also included, it should be behind those data model assemblies that it depends on.
 		/// </summary>
+		[Description("Exclusive to DataModelAssemblyNames")]
 		public DataModel[]? DataModels
 		{
 			get { return dataModels; }

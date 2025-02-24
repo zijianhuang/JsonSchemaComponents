@@ -42,10 +42,7 @@
           }
         },
         "CherryPickingMethods": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": "integer"
         },
         "NamespacePrefixesOfGodAssemblyTypes": {
           "type": [
@@ -90,28 +87,16 @@
           ]
         },
         "GenerateBothAsyncAndSync": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "StringAsString": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "CamelCase": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "UseSystemTextJson": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "ContainerNameSuffix": {
           "type": [
@@ -120,34 +105,19 @@
           ]
         },
         "UseEnsureSuccessStatusCodeEx": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "IncludeEnsureSuccessStatusCodeExBlock": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "HandleHttpRequestHeaders": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "CancellationTokenEnabled": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "JsMethodSuffixWithClrTypeName": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "Plugins": {
           "type": [
@@ -206,16 +176,10 @@
           ]
         },
         "CherryPickingMethods": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": "integer"
         },
         "DataAnnotationsToComments": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         }
       }
     },

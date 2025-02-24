@@ -5,7 +5,10 @@
   ],
   "properties": {
     "ClientApiOutputs": {
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
         "ClientLibraryProjectFolderName": {
           "type": [
@@ -20,28 +23,16 @@
           ]
         },
         "GenerateBothAsyncAndSync": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "StringAsString": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "CamelCase": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "UseSystemTextJson": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "ContainerNameSuffix": {
           "type": [
@@ -50,34 +41,19 @@
           ]
         },
         "UseEnsureSuccessStatusCodeEx": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "IncludeEnsureSuccessStatusCodeExBlock": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "HandleHttpRequestHeaders": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "CancellationTokenEnabled": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "JsMethodSuffixWithClrTypeName": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "Plugins": {
           "type": [
@@ -91,13 +67,22 @@
             ],
             "properties": {
               "AssemblyName": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "TargetDir": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "TSFile": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "ContentType": {
                 "type": [
@@ -174,7 +159,10 @@
       }
     },
     "ApiSelections": {
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
         "ExcludedControllerNames": {
           "type": [
@@ -212,19 +200,16 @@
             ],
             "properties": {
               "AssemblyName": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "CherryPickingMethods": {
-                "type": [
-                  "integer",
-                  "null"
-                ]
+                "type": "integer"
               },
               "DataAnnotationsToComments": {
-                "type": [
-                  "boolean",
-                  "null"
-                ]
+                "type": "boolean"
               }
             },
             "required": [
@@ -234,10 +219,7 @@
           }
         },
         "CherryPickingMethods": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": "integer"
         },
         "NamespacePrefixesOfGodAssemblyTypes": {
           "type": [

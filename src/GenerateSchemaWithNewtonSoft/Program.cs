@@ -9,7 +9,7 @@ namespace GenerateSchemaWithNewtonSoft
 	{
 		static int Main(string[] args)
 		{
-			return ProgramCommon.Execute(CustomExtraction);
+			return ProgramCommon.Execute(CustomExtraction, args);
 		}
 
 		static bool CustomExtraction(Options options)

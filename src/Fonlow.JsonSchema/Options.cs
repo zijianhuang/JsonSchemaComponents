@@ -1,10 +1,9 @@
-﻿using Plossum.CommandLine;
+﻿using Fonlow.Cli;
+using Plossum.CommandLine;
 
 namespace Fonlow.JsonSchema
 {
-	[CommandLineManager(ApplicationName = "JSON Schema Generator", Description = "Generate JSON Schema from a POCO class.", OptionSeparator = "/", Assignment = ":", Copyright = "Fonlow (c) 2025", Version = "1.0")]
-	[CommandLineOptionGroup("detail", Name = "Detail")]
-	[CommandLineOptionGroup("other", Name = "Other")]
+	[CliManager(ApplicationName = "JSON Schema Generator", Description = "Generate JSON Schema from a POCO class.", OptionSeparator = "/", Assignment = ":", Copyright = "Fonlow (c) 2025", Version = "1.0")]
 	public class Options
 	{
 		[CommandLineOption(Aliases = "C", Description = "Class name including namespace, e.g., /C=My.Namespace.MyClass")]

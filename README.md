@@ -4,8 +4,8 @@ While there are variety of [JSON schema tools](https://json-schema.org/tools) si
 
 1. Existing .NET (Framework) components that can generate JSON schema from POCO classes or generate POCO classes from JSON Schema.
 1. Introduce locally run tools.
-1. Develop CLI tools.
-1. Compare with different components of generating JSON schema.
+1. Develop CLI tools for transforming POCO to JSON schema.
+1. [Compare with different components of generating JSON schema.](Comparison.md)
 
 If a .NET developer who prefer code first approach, you would often create POCO classes first for various purposes, and generate meta data like XML schema, JSON schema, database schema, WSDL and Swagger/OpenAPI definition. The goal of these project is to find the "best" .NET component that can generate JSON schema from a complex POCO class, and the schema can make the hand-crafting of JSON data become convenient with a decent text editor like Visual Studio Code and alike, fully utilizing the data constraints defined in the data model.
 
@@ -28,12 +28,11 @@ References:
 
 Go "Main Menu -> Edit -> Paste Special -> Paste JSON as Classes".
 
-
 ## Generating Schema From C#
 
 Plain Old Classes can provide enough info for XML schema and JSON schema. This open source project provides side by side comparisons of some popular components of generating schema from a POCO class.
 
-### [GenerateJsonSchema.exe](GenerateJsonSchema) using [.NET 9 Extract SChema](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema)
+### [GenerateJsonSchema.exe](src/GenerateJsonSchema) using [.NET 9 Extract SChema](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema)
 
 Usage:
 ```
@@ -58,7 +57,7 @@ GenerateJsonSchema.exe /op=c:/temp/demoSchema.json /c=Fonlow.CodeDom.Web.CodeGen
 ```
 
 Hints:
-* The other CLI apps has the same set of arguments.
+* The other CLI apps have the same set of arguments.
 
 ### [GenerateSchemaWithNJsonSchema.exe](GenerateSchemaWithNJsonSchema) using [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
 

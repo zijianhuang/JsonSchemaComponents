@@ -457,6 +457,6 @@ NewtonJson and NJsonSchema can read what declared in `DescriptionAttribute` and 
 
 .NET 9 Schema Export does not support [Title and Description](https://json-schema.org/understanding-json-schema/reference/annotations).
 
-So, basically for my cases, particular for the CodeGen settings, I can use only what exported by .NET 9 or NewtonSoft JSON Schema.
+So, basically for my cases, particularly for the CodeGen settings, I can use only what exported by .NET 9 or NewtonSoft JSON Schema.
 
 So the verdict is, `Newtonsoft.Json.Schema.Generation` is the best, at least for my cases. .NET 9 Schema Export is the 2nd best.

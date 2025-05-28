@@ -32,7 +32,7 @@ Go "Main Menu -> Edit -> Paste Special -> Paste JSON as Classes".
 
 Plain Old Classes can provide enough info for XML schema and JSON schema. This open source project provides side by side comparisons of some popular components of generating schema from a POCO class.
 
-### [GenerateJsonSchema.exe](src/GenerateJsonSchema) using [.NET 9 Extract SChema](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema)
+### [GenerateJsonSchema.exe](src/GenerateJsonSchema/) using [.NET 9 Extract SChema](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/extract-schema)
 
 Usage:
 ```

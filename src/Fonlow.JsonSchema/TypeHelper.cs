@@ -13,10 +13,14 @@ namespace Fonlow.JsonSchema
 
 		public static Type GetTypeFromAssembly(string assemblyFilePath, string className)
 		{
+			Console.WriteLine($"Loading assembly from {assemblyFilePath} to get type {className}.");
 			string absolutePath = System.IO.Path.GetFullPath(assemblyFilePath);
 			Assembly assembly = LoadAssemblyFile(absolutePath);
 			if (assembly == null)
+			{
+				Console.WriteLine("Not found assembly.");
 				return null;
+			}
 
 			try
 			{
@@ -26,14 +30,14 @@ namespace Fonlow.JsonSchema
 			{
 				foreach (Exception ex in e.LoaderExceptions)
 				{
-					Trace.TraceWarning(String.Format("When loading {0}, GetTypes errors occur: {1}", assembly.FullName, ex.Message));
+					Console.Error.WriteLine(String.Format("When loading {0}, GetTypes errors occur: {1}", assembly.FullName, ex.Message));
 				}
 
 				return null;
 			}
 			catch (TargetInvocationException e)
 			{
-				Trace.TraceWarning(String.Format("When loading {0}, GetTypes errors occur: {1}", assembly.FullName, e.Message + "~~" + e.InnerException.Message));
+				Console.Error.WriteLine(String.Format("When loading {0}, GetTypes errors occur: {1}", assembly.FullName, e.Message + "~~" + e.InnerException.Message));
 				return null;
 			}
 		}
@@ -70,8 +74,7 @@ namespace Fonlow.JsonSchema
 			catch (Exception ex) when (ex is System.IO.FileLoadException || ex is BadImageFormatException || ex is System.IO.FileNotFoundException || ex is ArgumentException)
 			{
 				string msg = String.Format("When loading {0}, errors occur: {1}", assemblyFilePath, ex.Message);
-				Console.WriteLine(msg);
-				Trace.TraceWarning(msg);
+				Console.Error.WriteLine(msg);
 				return null;
 			}
 		}

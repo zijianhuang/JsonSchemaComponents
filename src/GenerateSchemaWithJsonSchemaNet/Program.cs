@@ -25,7 +25,7 @@ namespace GenerateSchemaWithJsonSchemaNet
 				.Title(options.Title)
 				.Description(options.Description);
 			JsonSchema schema = schemaBuilder.FromType(type).Build();
-			var converter = new SchemaJsonConverter();
+			var converter = new Json.Schema.JsonSchemaJsonConverter();
 			using var fs = new FileStream(options.OutputPath, FileMode.Create);
 			using var writer = new Utf8JsonWriter(fs, new JsonWriterOptions
 			{

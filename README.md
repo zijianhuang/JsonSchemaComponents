@@ -58,14 +58,23 @@ GenerateJsonSchema.exe /op=c:/temp/demoSchema.json /c=Fonlow.CodeDom.Web.CodeGen
 
 Hints:
 * The other CLI apps have the same set of arguments.
+* It does not support doc comment but DescriptionAttribute.
 
 ### [GenerateSchemaWithNJsonSchema.exe](GenerateSchemaWithNJsonSchema) using [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
+
+Hints:
+* It supports doc comment.
 
 ### [GenerateSchemaWithNewtonSoft.exe](GenerateSchemaWithNewtonSoft) using  [NewtonSoft.Json](https://www.newtonsoft.com/jsonschema)
 
 Online validator on: https://www.jsonschemavalidator.net/ which can validate draft v3 to 2020-12.
 
+Hints:
+* This does not support doc comment.
+
 ### [GenerateSchemaWithJsonSchemaNet.exe](GenerateSchemaWithJsonSchemaNet) using [JSON Everything](https://json-everything.net/)
 
 Online validator on: https://json-everything.net/json-schema for Draft 6 to 2020-12
 
+Hints:
+* This does not support doc comment.

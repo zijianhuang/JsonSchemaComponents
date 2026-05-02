@@ -21,6 +21,7 @@ namespace GenerateSchemaWithNewtonSoft
 			}
 
 			JSchemaGenerator generator = new JSchemaGenerator();
+			generator.GenerationProviders.Add(new StringEnumGenerationProvider());
 			generator.DefaultRequired = Required.Default; //otherwise, most fields particularily string fields are required.
 			JSchema schema = generator.Generate(type);
 			schema.Title = options.Title;

@@ -10,79 +10,65 @@
         },
         {
           "type": "object",
+          "description": "Client APIs as output for C#. Mapped to \"ClientApiOutputs\" in CodeGen.json.",
           "additionalProperties": false,
           "properties": {
             "ClientLibraryProjectFolderName": {
               "type": [
                 "null",
                 "string"
-              ]
+              ],
+              "description": "Assuming the C# client API project is the sibling of Web API project. Relative path to the running instance of the WebApi project should be fine."
             },
             "FileName": {
               "type": [
                 "null",
                 "string"
-              ]
+              ],
+              "description": "File to be generated under ClientLibraryProjectFolder. The default is WebApiClientAuto.cs."
             },
             "GenerateBothAsyncAndSync": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "For .NET client, generate both async and sync functions for each Web API function, while by default create only async functions."
             },
             "StringAsString": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Whether the Web API return string as string, rather than JSON object which is a double quoted string. Default true."
             },
             "CamelCase": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Whether to conform to the camel casing convention of javascript and JSON.\nIf not defined, WebApiClientGen will check if GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ContractResolver is Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver;\nIf CamelCasePropertyNamesContractResolver is presented, camelCasing will be used. If not, no camelCasing transformation will be used."
             },
             "UseSystemTextJson": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Use System.Text.Json instead of Newtonsoft.Json"
             },
             "ContainerNameSuffix": {
               "type": [
                 "null",
                 "string"
-              ]
+              ],
+              "description": "For generated C# codes. Each controller is mapped into a container class to contain client API functions matching controller operations.\nBy default the container is named after the controller name, for example, service class ValuesController will result in client container class Values.\nYou may define a container name suffix such as \"Client\" or \"Proxy\", so the generated container class name may become ValuesClient."
             },
             "UseEnsureSuccessStatusCodeEx": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Replace EnsureSuccessStatusCode with EnsureSuccessStatusCodeEx for specific unsuccessful HTTP status handling, which throws YourClientWebApiRequestException."
             },
             "IncludeEnsureSuccessStatusCodeExBlock": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Default  is true so the code block is included in the generated codes.\nDefined if UseEnsureSuccessStatusCodeEx is true. Respective code block will be included the code gen output. However, if you have a few client APIs generated to be used in the same application,\nand you may want these client APIs share the same code block, then put the WebApiRequestException code block to an assembly or a standalone CS file."
             },
             "HandleHttpRequestHeaders": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Function parameters contain a callback to handle HTTP request headers, applied to C# and TypeScript codes generated."
             },
             "CancellationTokenEnabled": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "Allow cancellation in Send"
             },
             "JsMethodSuffixWithClrTypeName": {
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": "boolean",
+              "description": "JS does not support method overloading, thus overloaded methods will be having different method name with suffix based on parameter names.\nHowever, there may be overloaded methods with the same parameter names but different CLR type, like byte, int, long and string etc.. \nHaving this option on will have suffix ParameterNameOfParameterCLRType"
             },
             "Plugins": {
               "type": [
@@ -99,10 +85,12 @@
     },
     "JSPlugin": {
       "type": "object",
+      "description": "Mapped to Plugins[] of CodeGen.json.",
       "additionalProperties": false,
       "required": [
         "AssemblyName",
         "TargetDir",
+        "TSFile",
         "AsModule"
       ],
       "properties": {
@@ -112,40 +100,52 @@
         },
         "TargetDir": {
           "type": "string",
+          "description": "Relative or absolute directory.",
           "minLength": 1
         },
         "TSFile": {
-          "type": "string"
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Name of TypeScript file to be geneated under TargetDir."
         },
         "ContentType": {
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "HTTP content type used in POST of HTTP of NG2. so text/plain could be used to avoid preflight in CORS."
         },
         "AsModule": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "True to have \"export namespace\"; false to have \"namespace\". jQuery wants \"namespace\"."
         },
         "ClientNamespaceSuffix": {
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Default is \".Client\", and the dot will be translate to underscore."
         },
         "ContainerNameSuffix": {
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "Client container class name for API functions is by default the API controller name. For example, HeroesController will result in client container class name \"Heroes\".\nAnd a setting value like \"Api\" may give \"Heroes\" a suffix, like \"HeroesApi\""
         },
         "DataAnnotationsToComments": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "For JS only. System.ComponentModel.DataAnnotations attributes are translated into Doc Comments, including Required, Range, MaxLength, MinLength, StringLength, DataType and RegularExpression."
         },
         "HelpStrictMode": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Give TypeScript strict mode more signal for null value.\nThe returned types and parameters may be null. And some primitive types in data model / interface may be null."
         },
         "NgDateOnlyFormControlEnabled": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "For Angular reactive form control binding with DateOnly, requiring yyyy-MM-dd local date, while the strongly typed field is JavaScript Date."
         }
       }
     },
@@ -157,34 +157,42 @@
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "The naming of namespace is after the controller's namespace. To distinguish from the server side namespace, it is better to add a suffix like \".Client\". The default is \".Client\"."
         },
         "DataAnnotationsEnabled": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "System.ComponentModel.DataAnnotations attributes are to be copied over, including Required, Range, MaxLength, MinLength and StringLength."
         },
         "DataAnnotationsToComments": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "For CS POCO and API function. System.ComponentModel.DataAnnotations attributes are translated into Doc Comments, \nincluding Required, Range, MaxLength, MinLength, StringLength, DataType and RegularExpression."
         },
         "DecorateDataModelWithDataContract": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Generated data types will be decorated with DataContractAttribute and DataMemberAttribute."
         },
         "DataContractNamespace": {
           "type": [
             "null",
             "string"
-          ]
+          ],
+          "description": "When DecorateDataModelWithDataContract is true, this is the namespace of DataContractAttribute. For example, \"http://mybusiness.com/09/2019"
         },
         "DecorateDataModelWithSerializable": {
           "type": "boolean"
         },
         "IEnumerableToArray": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Default true."
         },
         "NotNullAttributeOnMethod": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "For TypeScript strict mode, used together with setting HelpStrictMode.\nIf NotNull decorates return. For scenarios most API may return null. \nThis should be exclusive to MaybeNullAttributeOnMethod. if NotNullAttributeOnMethod and MaybeNullAttributeOnMethod are declared, MaybeNullAttributeOnMethod wins.\nCS Codes will have NotNull copied over, however for you to generate TypeScript codes from the C# Client API codes when developing a broker broker service.\tTS codes will  not have null as optional type for return, when HelpStrictMode is true.\nExclusive against SupportNullReferenceTypeOnMethodReturn."
         },
         "MaybeNullAttributeOnMethod": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "For TypeScript strict mode, used together with setting HelpStrictMode.\nIf MaybeNull decorates return. For scenarios, most if not all API functions are expected to return a not null value. For example, empty array rather than null, or an object rather than null otherwise exception.\nThis should be exclusive to NotNullAttributeOnMethod.\nCS Codes will have NotNull copied over, however for you to generate TypeScript codes from the C# Client API codes when developing a broker broker service. TS codes will not have null as optional type for return, when HelpStrictMode is true.\nExclusive against SupportNullReferenceTypeOnMethodReturn."
         }
       }
     },
@@ -207,6 +215,7 @@
     },
     "CodeGenConfig": {
       "type": "object",
+      "description": "For cherry picking APIs and data models ",
       "additionalProperties": false,
       "properties": {
         "ExcludedControllerNames": {
@@ -214,6 +223,7 @@
             "array",
             "null"
           ],
+          "description": "To exclude some controllers. For example, [My.Namespace.Home, My.Namespace.FileUpload] for My.Namespace.HomeController and My.Namespace.FileUploadController.",
           "items": {
             "type": "string"
           }
@@ -239,10 +249,8 @@
           }
         },
         "CherryPickingMethods": {
+          "description": "Cherry picking methods of POCO classes",
           "oneOf": [
-            {
-              "type": "null"
-            },
             {
               "$ref": "#/definitions/CherryPickingMethods"
             }
@@ -253,6 +261,7 @@
             "array",
             "null"
           ],
+          "description": "Used when cherry picking methods is for god assembly (32)",
           "items": {
             "type": "string"
           }
@@ -271,31 +280,29 @@
     "DataModel": {
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "AssemblyName",
+        "CherryPickingMethods"
+      ],
       "properties": {
         "AssemblyName": {
-          "type": "string"
+          "type": [
+            "null",
+            "string"
+          ]
         },
         "CherryPickingMethods": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/definitions/CherryPickingMethods"
-            }
-          ]
+          "$ref": "#/definitions/CherryPickingMethods"
         },
         "DataAnnotationsToComments": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean",
+          "description": "For each selected assembly with POCO classes. System.ComponentModel.DataAnnotations attributes are translated into Doc Comments, \nincluding Required, Range, MaxLength, MinLength, StringLength, DataType and RegularExpression.\nIf defined, overwrite the global setting in ModelGenOutputs; if not defined, follow the global setting."
         }
       }
     },
     "CherryPickingMethods": {
       "type": "integer",
-      "description": "",
+      "description": "Flagged options for cherry picking in various development processes.",
       "x-enumFlags": true,
       "x-enumNames": [
         "All",
@@ -323,6 +330,7 @@
     },
     {
       "type": "object",
+      "description": "What CodeGenController is expecting ",
       "additionalProperties": false,
       "required": [
         "ClientApiOutputs"

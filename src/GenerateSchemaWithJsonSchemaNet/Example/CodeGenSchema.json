@@ -7,28 +7,13 @@
       "type": "object",
       "properties": {
         "ExcludedControllerNames": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          }
+          "$ref": "#/$defs/arrayOfString"
         },
         "DataModelAssemblyNames": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          }
+          "$ref": "#/$defs/arrayOfString"
         },
         "DataModels": {
-          "type": [
-            "array",
-            "null"
-          ],
+          "type": "array",
           "items": {
             "type": "object",
             "properties": {
@@ -36,58 +21,26 @@
                 "type": "string"
               },
               "CherryPickingMethods": {
-                "enum": [
-                  "All",
-                  "DataContract",
-                  "NewtonsoftJson",
-                  "Serializable",
-                  "AspNet",
-                  "NetCore",
-                  "ApiOnly",
-                  null
-                ]
+                "$ref": "#/$defs/cherryPickingMethods"
               },
               "DataAnnotationsToComments": {
-                "type": [
-                  "boolean",
-                  "null"
-                ]
+                "type": "boolean"
               }
             },
             "required": [
-              "AssemblyName"
+              "AssemblyName",
+              "CherryPickingMethods"
             ]
           }
         },
         "CherryPickingMethods": {
-          "enum": [
-            "All",
-            "DataContract",
-            "NewtonsoftJson",
-            "Serializable",
-            "AspNet",
-            "NetCore",
-            "ApiOnly",
-            null
-          ]
+          "$ref": "#/$defs/cherryPickingMethods"
         },
         "NamespacePrefixesOfGodAssemblyTypes": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          }
+          "$ref": "#/$defs/arrayOfString"
         },
         "AllDataModelAssemblyNames": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          }
+          "$ref": "#/$defs/arrayOfString"
         }
       }
     },
@@ -95,10 +48,7 @@
       "type": "object",
       "properties": {
         "CSClientNamespaceSuffix": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "DataAnnotationsEnabled": {
           "type": "boolean"
@@ -110,10 +60,7 @@
           "type": "boolean"
         },
         "DataContractNamespace": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "DecorateDataModelWithSerializable": {
           "type": "boolean"
@@ -128,82 +75,43 @@
           "type": "boolean"
         },
         "ClientLibraryProjectFolderName": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "FileName": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "GenerateBothAsyncAndSync": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "StringAsString": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "CamelCase": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "UseSystemTextJson": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "ContainerNameSuffix": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "UseEnsureSuccessStatusCodeEx": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "IncludeEnsureSuccessStatusCodeExBlock": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "HandleHttpRequestHeaders": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "CancellationTokenEnabled": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "JsMethodSuffixWithClrTypeName": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": "boolean"
         },
         "Plugins": {
-          "type": [
-            "array",
-            "null"
-          ],
+          "type": "array",
           "items": {
             "type": "object",
             "properties": {
@@ -217,25 +125,16 @@
                 "type": "string"
               },
               "ContentType": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               },
               "AsModule": {
                 "type": "boolean"
               },
               "ClientNamespaceSuffix": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               },
               "ContainerNameSuffix": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               },
               "DataAnnotationsToComments": {
                 "type": "boolean"
@@ -261,5 +160,24 @@
   "required": [
     "ApiSelections",
     "ClientApiOutputs"
-  ]
+  ],
+  "$defs": {
+    "arrayOfString": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cherryPickingMethods": {
+      "enum": [
+        "All",
+        "DataContract",
+        "NewtonsoftJson",
+        "Serializable",
+        "AspNet",
+        "NetCore",
+        "ApiOnly"
+      ]
+    }
+  }
 }

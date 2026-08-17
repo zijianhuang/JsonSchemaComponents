@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="NJsonSchema" Version="11.6.1" />
+    <PackageReference Include="NJsonSchema.NewtonsoftJson" Version="11.6.1" />
   </ItemGroup>
 
   <ItemGroup>

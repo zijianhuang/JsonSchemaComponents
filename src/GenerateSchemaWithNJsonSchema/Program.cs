@@ -18,7 +18,18 @@ namespace GenerateSchemaWithNJsonSchema
 				return false;
 			}
 
-			var schema = JsonSchema.FromType(type);
+			var schema = JsonSchema.FromType(type, new NJsonSchema.NewtonsoftJson.Generation.NewtonsoftJsonSchemaGeneratorSettings
+			{
+				SchemaType= SchemaType.OpenApi3,
+				SerializerSettings = new Newtonsoft.Json.JsonSerializerSettings
+				{
+					ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver(),
+					Converters = new List<Newtonsoft.Json.JsonConverter>
+					{
+						new Newtonsoft.Json.Converters.StringEnumConverter()
+					}
+				}
+			});
 			schema.Title = options.Title;
 			schema.Description = options.Description;
 			var schemaData = schema.ToJson(Newtonsoft.Json.Formatting.Indented);
